@@ -27,6 +27,8 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "nodemailer": "^6.10.1",
+    "pg": "^8.15.5",
+    "pg-connection-string": "^2.8.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -39,7 +41,7 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.0.0 <=22.x.x",
+    "node": "20.8.1",
     "npm": ">=6.0.0"
   },
   "strapi": {
