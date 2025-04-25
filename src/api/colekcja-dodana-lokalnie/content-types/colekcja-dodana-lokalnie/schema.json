@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "colekcja_dodana_lokalnies",
+  "info": {
+    "singularName": "colekcja-dodana-lokalnie",
+    "pluralName": "colekcja-dodana-lokalnies",
+    "displayName": "colekcja dodana lokalnie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "test": {
+      "type": "string"
+    }
+  }
+}

@@ -421,6 +421,35 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiColekcjaDodanaLokalnieColekcjaDodanaLokalnie
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'colekcja_dodana_lokalnies';
+  info: {
+    displayName: 'colekcja dodana lokalnie';
+    pluralName: 'colekcja-dodana-lokalnies';
+    singularName: 'colekcja-dodana-lokalnie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::colekcja-dodana-lokalnie.colekcja-dodana-lokalnie'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    test: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
@@ -1082,6 +1111,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
+      'api::colekcja-dodana-lokalnie.colekcja-dodana-lokalnie': ApiColekcjaDodanaLokalnieColekcjaDodanaLokalnie;
       'api::event.event': ApiEventEvent;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::kolekcja-dodana-na-potrzeby-testow.kolekcja-dodana-na-potrzeby-testow': ApiKolekcjaDodanaNaPotrzebyTestowKolekcjaDodanaNaPotrzebyTestow;
