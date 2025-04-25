@@ -421,35 +421,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiColekcjaDodanaLokalnieColekcjaDodanaLokalnie
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'colekcja_dodana_lokalnies';
-  info: {
-    displayName: 'colekcja dodana lokalnie';
-    pluralName: 'colekcja-dodana-lokalnies';
-    singularName: 'colekcja-dodana-lokalnie';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::colekcja-dodana-lokalnie.colekcja-dodana-lokalnie'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    test: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
@@ -505,93 +476,6 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiKolekcjaDodanaNaPotrzebyTestowKolekcjaDodanaNaPotrzebyTestow
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'kolekcja_dodana_na_potrzeby_testows';
-  info: {
-    displayName: 'Kolekcja dodana na potrzeby testow';
-    pluralName: 'kolekcja-dodana-na-potrzeby-testows';
-    singularName: 'kolekcja-dodana-na-potrzeby-testow';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::kolekcja-dodana-na-potrzeby-testow.kolekcja-dodana-na-potrzeby-testow'
-    > &
-      Schema.Attribute.Private;
-    numertestowy: Schema.Attribute.Integer;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiKolekcjaTestKolekcjaTest
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'kolekcja_tests';
-  info: {
-    displayName: 'Kolekcja test';
-    pluralName: 'kolekcja-tests';
-    singularName: 'kolekcja-test';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::kolekcja-test.kolekcja-test'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    sdvsdv: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPostPost extends Struct.CollectionTypeSchema {
-  collectionName: 'posts';
-  info: {
-    description: '';
-    displayName: 'Post';
-    pluralName: 'posts';
-    singularName: 'post';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Schema.Attribute.Blocks;
-    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
-      Schema.Attribute.Private;
-    published_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1111,12 +995,8 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
-      'api::colekcja-dodana-lokalnie.colekcja-dodana-lokalnie': ApiColekcjaDodanaLokalnieColekcjaDodanaLokalnie;
       'api::event.event': ApiEventEvent;
       'api::home-page.home-page': ApiHomePageHomePage;
-      'api::kolekcja-dodana-na-potrzeby-testow.kolekcja-dodana-na-potrzeby-testow': ApiKolekcjaDodanaNaPotrzebyTestowKolekcjaDodanaNaPotrzebyTestow;
-      'api::kolekcja-test.kolekcja-test': ApiKolekcjaTestKolekcjaTest;
-      'api::post.post': ApiPostPost;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
