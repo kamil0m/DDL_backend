@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kolekcja_dodana_na_potrzeby_testows",
+  "info": {
+    "singularName": "kolekcja-dodana-na-potrzeby-testow",
+    "pluralName": "kolekcja-dodana-na-potrzeby-testows",
+    "displayName": "Kolekcja dodana na potrzeby testow"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "numertestowy": {
+      "type": "integer"
+    }
+  }
+}

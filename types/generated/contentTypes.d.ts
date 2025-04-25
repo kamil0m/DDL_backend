@@ -484,6 +484,35 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiKolekcjaDodanaNaPotrzebyTestowKolekcjaDodanaNaPotrzebyTestow
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kolekcja_dodana_na_potrzeby_testows';
+  info: {
+    displayName: 'Kolekcja dodana na potrzeby testow';
+    pluralName: 'kolekcja-dodana-na-potrzeby-testows';
+    singularName: 'kolekcja-dodana-na-potrzeby-testow';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kolekcja-dodana-na-potrzeby-testow.kolekcja-dodana-na-potrzeby-testow'
+    > &
+      Schema.Attribute.Private;
+    numertestowy: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiKolekcjaTestKolekcjaTest
   extends Struct.CollectionTypeSchema {
   collectionName: 'kolekcja_tests';
@@ -1055,6 +1084,7 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::event.event': ApiEventEvent;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::kolekcja-dodana-na-potrzeby-testow.kolekcja-dodana-na-potrzeby-testow': ApiKolekcjaDodanaNaPotrzebyTestowKolekcjaDodanaNaPotrzebyTestow;
       'api::kolekcja-test.kolekcja-test': ApiKolekcjaTestKolekcjaTest;
       'api::post.post': ApiPostPost;
       'plugin::content-releases.release': PluginContentReleasesRelease;

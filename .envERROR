@@ -1,0 +1,8 @@
+HOST=c9mq4861d16jlm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com
+PORT=5432
+APP_KEYS="toBeModified1,toBeModified2"
+API_TOKEN_SALT=tobemodified
+ADMIN_JWT_SECRET=tobemodified
+TRANSFER_TOKEN_SALT=tobemodified
+JWT_SECRET=tobemodified
+DATABASE_URL=postgres://u1t40ho560e570:p5c8ac7311d7cc3fd74f66a48796b7f499058baffedab5b6215573c3ad6f4a7e2@c9mq4861d16jlm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d1qsr57mqqsvrs
