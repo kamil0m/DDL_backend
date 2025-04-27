@@ -450,34 +450,33 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
-  collectionName: 'home_pages';
+export interface ApiJoinUsPageJoinUsPage extends Struct.CollectionTypeSchema {
+  collectionName: 'join_us_pages';
   info: {
     description: '';
-    displayName: 'HomePage';
-    pluralName: 'home-pages';
-    singularName: 'home-page';
+    displayName: 'JoinUsPage';
+    pluralName: 'join-us-pages';
+    singularName: 'join-us-page';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    bannerImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.String;
+    JakZostacCzlonkiem: Schema.Attribute.Blocks;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::home-page.home-page'
+      'api::join-us-page.join-us-page'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    Regulamin: Schema.Attribute.Blocks;
+    RegulaminPdf: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -996,7 +995,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::blog.blog': ApiBlogBlog;
       'api::event.event': ApiEventEvent;
-      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::join-us-page.join-us-page': ApiJoinUsPageJoinUsPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

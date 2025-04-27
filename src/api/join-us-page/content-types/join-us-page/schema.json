@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "join_us_pages",
+  "info": {
+    "singularName": "join-us-page",
+    "pluralName": "join-us-pages",
+    "displayName": "JoinUsPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "JakZostacCzlonkiem": {
+      "type": "blocks"
+    },
+    "Regulamin": {
+      "type": "blocks"
+    },
+    "RegulaminPdf": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
