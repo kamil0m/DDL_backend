@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "join_us_pages",
   "info": {
     "singularName": "join-us-page",
@@ -10,12 +10,29 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "JakZostacCzlonkiem": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Regulamin": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "RegulaminPdf": {
       "allowedTypes": [
@@ -25,7 +42,12 @@
         "audios"
       ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
