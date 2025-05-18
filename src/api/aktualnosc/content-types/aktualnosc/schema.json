@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "events",
+  "collectionName": "aktualnosci",
   "info": {
-    "singularName": "event",
-    "pluralName": "events",
-    "displayName": "Wydarzenia",
-    "description": ""
+    "singularName": "aktualnosc",
+    "pluralName": "aktualnosci",
+    "displayName": "Aktualnosci"
   },
   "options": {
     "draftAndPublish": true
@@ -18,71 +17,47 @@
   "attributes": {
     "Tytul": {
       "type": "string",
+      "required": true,
+      "default": "Tytuł wydarzenia",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "Tresc": {
       "type": "blocks",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "Data_publikacji": {
       "type": "date",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "Miejsce_wydarzenia": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Zdjecie": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "Link_do_Facebook": {
-      "type": "string",
       "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       }
+    },
+    "Wazne": {
+      "type": "boolean",
+      "default": false,
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "Wazne_do": {
+      "type": "date"
     },
     "Podpis": {
       "type": "string",
-      "required": true
-    },
-    "Data_wydarzenia": {
-      "type": "date",
       "required": true
     }
   }

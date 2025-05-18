@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_cta_call_to_actions",
+  "info": {
+    "displayName": "CallToAction"
+  },
+  "options": {},
+  "attributes": {
+    "Wezwanie": {
+      "type": "text",
+      "required": true
+    },
+    "Link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

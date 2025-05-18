@@ -369,55 +369,119 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
-  collectionName: 'abouts';
+export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_us_pages';
   info: {
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
+    description: '';
+    displayName: 'Strona O nas';
+    pluralName: 'about-us-pages';
+    singularName: 'about-us-page';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Content: Schema.Attribute.Blocks;
+    Cele: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
+    Historia: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-us-page.about-us-page'
+    >;
+    Motto: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
-  collectionName: 'blogs';
+export interface ApiAktualnoscAktualnosc extends Struct.CollectionTypeSchema {
+  collectionName: 'aktualnosci';
   info: {
-    displayName: 'Blogs';
-    pluralName: 'blogs';
-    singularName: 'blog';
+    displayName: 'Aktualnosci';
+    pluralName: 'aktualnosci';
+    singularName: 'aktualnosc';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
-      Schema.Attribute.Private;
+    Data_publikacji: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::aktualnosc.aktualnosc'
+    >;
+    Podpis: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    Tresc: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Tytul: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Tytu\u0142 wydarzenia'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Wazne: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    Wazne_do: Schema.Attribute.Date;
   };
 }
 
@@ -425,28 +489,74 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
     description: '';
-    displayName: 'Event';
+    displayName: 'Wydarzenia';
     pluralName: 'events';
     singularName: 'event';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Date: Schema.Attribute.Date;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
-      Schema.Attribute.Private;
-    Media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Data_publikacji: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Data_wydarzenia: Schema.Attribute.Date & Schema.Attribute.Required;
+    Link_do_Facebook: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    Miejsce_wydarzenia: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Podpis: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    Tresc: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Tytul: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Zdjecie: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
@@ -454,7 +564,7 @@ export interface ApiJoinUsPageJoinUsPage extends Struct.SingleTypeSchema {
   collectionName: 'join_us_pages';
   info: {
     description: '';
-    displayName: 'JoinUsPage';
+    displayName: 'Strona Do\u0142\u0105cz do nas';
     pluralName: 'join-us-pages';
     singularName: 'join-us-page';
   };
@@ -470,7 +580,21 @@ export interface ApiJoinUsPageJoinUsPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    JakZostacCzlonkiem: Schema.Attribute.Blocks &
+    Dlaczego_do_nas_dolaczyc: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Hello_Asso: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Jak_zostac_czlonkiem: Schema.Attribute.Blocks &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -504,13 +628,12 @@ export interface ApiJoinUsPageJoinUsPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSampleImagesCollectionSampleImagesCollection
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'sample_images_collections';
+export interface ApiOsobaOsoba extends Struct.CollectionTypeSchema {
+  collectionName: 'osoby';
   info: {
-    displayName: 'SampleImagesCollection';
-    pluralName: 'sample-images-collections';
-    singularName: 'sample-images-collection';
+    displayName: 'Osoby';
+    pluralName: 'osoby';
+    singularName: 'osoba';
   };
   options: {
     draftAndPublish: true;
@@ -519,17 +642,18 @@ export interface ApiSampleImagesCollectionSampleImagesCollection
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Funkcja: Schema.Attribute.String & Schema.Attribute.Required;
+    Imie: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::sample-images-collection.sample-images-collection'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::osoba.osoba'> &
       Schema.Attribute.Private;
+    Nazwisko: Schema.Attribute.String & Schema.Attribute.Required;
+    Opis: Schema.Attribute.Blocks & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Zdjecie: Schema.Attribute.Media<'images' | 'files'>;
   };
 }
 
@@ -1042,11 +1166,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
-      'api::blog.blog': ApiBlogBlog;
+      'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
+      'api::aktualnosc.aktualnosc': ApiAktualnoscAktualnosc;
       'api::event.event': ApiEventEvent;
       'api::join-us-page.join-us-page': ApiJoinUsPageJoinUsPage;
-      'api::sample-images-collection.sample-images-collection': ApiSampleImagesCollectionSampleImagesCollection;
+      'api::osoba.osoba': ApiOsobaOsoba;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

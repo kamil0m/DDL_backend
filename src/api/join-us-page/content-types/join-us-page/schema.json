@@ -4,7 +4,7 @@
   "info": {
     "singularName": "join-us-page",
     "pluralName": "join-us-pages",
-    "displayName": "JoinUsPage",
+    "displayName": "Strona Dołącz do nas",
     "description": ""
   },
   "options": {
@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "JakZostacCzlonkiem": {
+    "Jak_zostac_czlonkiem": {
       "type": "blocks",
       "required": true,
       "pluginOptions": {
@@ -35,14 +35,33 @@
       }
     },
     "RegulaminPdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Dlaczego_do_nas_dolaczyc": {
+      "type": "blocks",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Hello_Asso": {
+      "type": "blocks",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
