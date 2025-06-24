@@ -1,18 +1,21 @@
-import { parse } from 'pg-connection-string';
-const config = parse(process.env.DATABASE_URL);
-
 export default ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
-      host: config.host,
-      port: config.port,
-      database: config.database,
-      user: config.user,
-      password: config.password,
+      connectionString: env('DATABASE_URL'),
       ssl: {
         rejectUnauthorized: false
       },
+    },
+    pool: {
+      min: 0,
+      max: 10,
+      acquireTimeoutMillis: 60000,
+      createTimeoutMillis: 30000,
+      destroyTimeoutMillis: 5000,
+      idleTimeoutMillis: 30000,
+      reapIntervalMillis: 1000,
+      createRetryIntervalMillis: 200,
     },
     debug: false,
   },
