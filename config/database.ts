@@ -3,19 +3,15 @@ export default ({ env }) => ({
     client: 'postgres',
     connection: {
       connectionString: env('DATABASE_URL'),
-      ssl: env('DATABASE_URL') && (
-        env('DATABASE_URL').includes('amazonaws.com') || 
-        env('DATABASE_URL').includes('heroku') ||
-        env('DATABASE_URL').includes('postgres://')
-      ) ? {
-        rejectUnauthorized: false // Required for Heroku Postgres and AWS RDS
-      } : false, // Disable SSL for localhost only
+      ssl: {
+        rejectUnauthorized: false
+      },
     },
     pool: {
       min: 0,
-      max: 5, // Lower max connections for development
-      acquireTimeoutMillis: 30000,
-      createTimeoutMillis: 15000,
+      max: 10,
+      acquireTimeoutMillis: 60000,
+      createTimeoutMillis: 30000,
       destroyTimeoutMillis: 5000,
       idleTimeoutMillis: 30000,
       reapIntervalMillis: 1000,
