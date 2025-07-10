@@ -17,41 +17,41 @@
   "attributes": {
     "Tytul": {
       "type": "string",
-      "required": true,
-      "default": "Tytuł wydarzenia",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "default": "Tytuł wydarzenia",
+      "required": true
     },
     "Tresc": {
       "type": "blocks",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "Data_publikacji": {
       "type": "date",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true
     },
     "Wazne": {
       "type": "boolean",
-      "default": false,
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true,
+      "default": false
     },
     "Wazne_do": {
       "type": "date"
@@ -59,6 +59,19 @@
     "Podpis": {
       "type": "string",
       "required": true
+    },
+    "Zdjecie": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }
