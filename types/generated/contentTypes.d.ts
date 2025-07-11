@@ -638,32 +638,65 @@ export interface ApiJoinUsPageJoinUsPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiOsobaOsoba extends Struct.CollectionTypeSchema {
-  collectionName: 'osoby';
+export interface ApiLudzieLudzie extends Struct.CollectionTypeSchema {
+  collectionName: 'ludzies';
   info: {
-    displayName: 'Osoby';
-    pluralName: 'osoby';
-    singularName: 'osoba';
+    displayName: 'Ludzie';
+    pluralName: 'ludzies';
+    singularName: 'ludzie';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Funkcja: Schema.Attribute.String & Schema.Attribute.Required;
-    Imie: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::osoba.osoba'> &
-      Schema.Attribute.Private;
-    Nazwisko: Schema.Attribute.String & Schema.Attribute.Required;
-    Opis: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Funkcja: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Imie: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::ludzie.ludzie'>;
+    Nazwisko: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Opis: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Zdjecie: Schema.Attribute.Media<'images' | 'files'>;
+    Zdjecie: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
@@ -1265,7 +1298,7 @@ declare module '@strapi/strapi' {
       'api::aktualnosc.aktualnosc': ApiAktualnoscAktualnosc;
       'api::event.event': ApiEventEvent;
       'api::join-us-page.join-us-page': ApiJoinUsPageJoinUsPage;
-      'api::osoba.osoba': ApiOsobaOsoba;
+      'api::ludzie.ludzie': ApiLudzieLudzie;
       'api::strona-glowna.strona-glowna': ApiStronaGlownaStronaGlowna;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
